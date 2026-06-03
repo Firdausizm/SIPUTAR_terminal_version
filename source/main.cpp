@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <filesystem>
 
 #include "patient.h"
 #include "utils.h"
@@ -9,15 +10,12 @@
 #include "binary_search.h"
 
 using namespace std;
-
-// ============================================================
-// SIPUTAR - Sistem Puskesmas Pintar
-// Program Utama
-// ============================================================
+namespace fs = std::filesystem;
 
 // Path file CSV
-const string FILE_PASIEN  = "data_pasien.csv";
-const string FILE_RIWAYAT = "riwayat_penyakit.csv";
+const string DATA_DIR      = "data";
+const string FILE_PASIEN  = DATA_DIR + "/data_pasien.csv";
+const string FILE_RIWAYAT = DATA_DIR + "/riwayat_penyakit.csv";
 
 // ---- Fungsi: Tambah Pasien ke Antrean ----
 void tambahPasienAntrean(PriorityQueue& antrean) {
@@ -522,7 +520,12 @@ int main() {
         system("chcp 65001 > nul");
     #endif
 
-    // Inisialisasi file CSV jika belum ada
+    // Buat folder data jika belum ada, lalu inisialisasi file CSV di dalamnya
+    try {
+        fs::create_directories(DATA_DIR);
+    } catch (...) {
+        // Biarkan program lanjut, error file akan ditangani oleh CSV handler
+    }
     initCSV(FILE_PASIEN, FILE_RIWAYAT);
 
     // Inisialisasi Priority Queue
@@ -559,7 +562,7 @@ int main() {
             cout << BOLD_WHITE << "     Terima kasih telah menggunakan SIPUTAR!      " << RESET;
             cout << BOLD_CYAN << "║" << RESET << endl;
             cout << "  " << BOLD_CYAN << "║" << RESET;
-            cout << DIM <<       "          Semoga hari Anda menyenangkan            " << RESET;
+            cout << DIM <<       "          Kurangin kopi, dan jangan banyak begadang yaww            " << RESET;
             cout << BOLD_CYAN << "║" << RESET << endl;
             cout << "  " << BOLD_CYAN << "╚══════════════════════════════════════════════════╝" << RESET << endl;
             cout << endl;
