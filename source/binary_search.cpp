@@ -3,15 +3,9 @@
 
 using namespace std;
 
-// ============================================================
-// SIPUTAR - Sistem Puskesmas Pintar
-// Binary Search & Sorting - Implementasi Manual
-//
-// Merge Sort: O(n log n) untuk mengurutkan data pasien by NIK
-// Binary Search: O(log n) untuk mencari pasien berdasarkan NIK
-// ============================================================
 
-// ---- Helper: Merge dua subarray yang sudah terurut ----
+
+// Merge dua subarray yang sudah terurut
 static void merge(vector<Pasien> &arr, int left, int mid, int right) {
   int n1 = mid - left + 1;
   int n2 = right - mid;
@@ -54,7 +48,7 @@ static void merge(vector<Pasien> &arr, int left, int mid, int right) {
   }
 }
 
-// ---- Merge Sort rekursif ----
+// Merge Sort rekursif
 static void mergeSort(vector<Pasien> &arr, int left, int right) {
   if (left < right) {
     int mid = left + (right - left) / 2;
@@ -65,15 +59,13 @@ static void mergeSort(vector<Pasien> &arr, int left, int right) {
   }
 }
 
-// ---- Sort data pasien berdasarkan NIK (ascending) ----
+// Sort data pasien berdasarkan NIK
 void sortPasienByNIK(vector<Pasien> &daftar) {
   if (daftar.size() <= 1)
     return;
   mergeSort(daftar, 0, daftar.size() - 1);
 }
 
-// ---- Binary Search: cari pasien berdasarkan NIK ----
-// Data HARUS sudah terurut berdasarkan NIK sebelum memanggil fungsi ini
 // Return: index pasien jika ditemukan, -1 jika tidak ditemukan
 int cariPasienByNIK(const vector<Pasien> &daftar, const string &nik) {
   int low = 0;
@@ -94,7 +86,7 @@ int cariPasienByNIK(const vector<Pasien> &daftar, const string &nik) {
   return -1; // Tidak ditemukan
 }
 
-// ---- Cari semua riwayat penyakit berdasarkan NIK ----
+
 // Linear search karena satu pasien bisa punya banyak riwayat
 vector<RiwayatPenyakit> cariRiwayatByNIK(const vector<RiwayatPenyakit> &daftar,
                                          const string &nik) {

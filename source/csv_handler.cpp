@@ -5,10 +5,6 @@
 
 using namespace std;
 
-// ============================================================
-// SIPUTAR - Sistem Puskesmas Pintar
-// CSV Handler - Implementasi
-// ============================================================
 
 // ---- Helper: Trim whitespace dari string ----
 static string trim(const string& str) {

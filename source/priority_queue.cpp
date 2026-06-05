@@ -5,16 +5,6 @@
 
 using namespace std;
 
-// ============================================================
-// SIPUTAR - Sistem Puskesmas Pintar
-// Priority Queue - Implementasi Manual (Binary Min-Heap)
-//
-// CATATAN: Ini adalah Min-Heap berdasarkan nilai prioritas.
-// Prioritas 1 (Gawat Darurat) lebih tinggi dari prioritas 5 (Kontrol).
-// Jika prioritas sama, pasien yang datang lebih dulu (nomorUrut kecil)
-// akan dilayani lebih dulu (FIFO).
-// ============================================================
-
 // ---- Constructor ----
 PriorityQueue::PriorityQueue() {
     ukuran = 0;

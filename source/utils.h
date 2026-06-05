@@ -6,11 +6,6 @@
 
 using namespace std;
 
-// ============================================================
-// SIPUTAR - Sistem Puskesmas Pintar
-// Utilitas Terminal
-// ============================================================
-
 // Kode warna ANSI
 const string RESET      = "\033[0m";
 const string BOLD       = "\033[1m";

@@ -3,13 +3,6 @@
 
 #include "patient.h"
 
-// ============================================================
-// SIPUTAR - Sistem Puskesmas Pintar
-// Priority Queue - Header
-// Implementasi manual menggunakan Binary Min-Heap
-// (Min-Heap karena prioritas kecil = lebih penting)
-// ============================================================
-
 const int MAX_ANTREAN = 50; // Kapasitas maksimum antrean
 
 class PriorityQueue {
@@ -23,7 +16,7 @@ private:
   void siftDown(int index);
   void swap(int i, int j);
 
-  // Komparator: return true jika a lebih prioritas dari b
+  // return true jika a lebih prioritas dari b
   bool lebihPrioritas(const AntreanNode &a, const AntreanNode &b);
 
 public:
