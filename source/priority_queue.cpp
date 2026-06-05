@@ -5,31 +5,29 @@
 
 using namespace std;
 
-// ---- Constructor ----
+// -Constructor
 PriorityQueue::PriorityQueue() {
     ukuran = 0;
     counterUrut = 0;
 }
 
-// ---- Swap dua elemen ----
 void PriorityQueue::swap(int i, int j) {
     AntreanNode temp = heap[i];
     heap[i] = heap[j];
     heap[j] = temp;
 }
 
-// ---- Komparator: a lebih prioritas dari b? ----
+
 // Return true jika a harus dilayani sebelum b
 bool PriorityQueue::lebihPrioritas(const AntreanNode& a, const AntreanNode& b) {
     // Prioritas lebih kecil = lebih penting
     if (a.prioritas != b.prioritas) {
         return a.prioritas < b.prioritas;
     }
-    // Jika prioritas sama, yang datang lebih dulu (nomorUrut lebih kecil) lebih dulu
     return a.nomorUrut < b.nomorUrut;
 }
 
-// ---- Sift Up: Perbaiki heap ke atas setelah insert ----
+// Perbaiki heap ke atas setelah insert
 void PriorityQueue::siftUp(int index) {
     while (index > 0) {
         int parent = (index - 1) / 2;
@@ -42,7 +40,7 @@ void PriorityQueue::siftUp(int index) {
     }
 }
 
-// ---- Sift Down: Perbaiki heap ke bawah setelah delete ----
+// Perbaikin heap ke bawah setelah delete
 void PriorityQueue::siftDown(int index) {
     while (true) {
         int smallest = index;
@@ -65,7 +63,6 @@ void PriorityQueue::siftDown(int index) {
     }
 }
 
-// ---- Enqueue: Tambah pasien ke antrean ----
 void PriorityQueue::enqueue(const Pasien& pasien, int prioritas, const string& keluhan) {
     if (isFull()) {
         cout << BOLD_RED << "  ✗ Antrean penuh! Kapasitas maksimum " << MAX_ANTREAN << " pasien." << RESET << endl;
@@ -83,7 +80,6 @@ void PriorityQueue::enqueue(const Pasien& pasien, int prioritas, const string& k
     ukuran++;
 }
 
-// ---- Dequeue: Keluarkan pasien dengan prioritas tertinggi ----
 AntreanNode PriorityQueue::dequeue() {
     AntreanNode top = heap[0];
 
@@ -96,27 +92,22 @@ AntreanNode PriorityQueue::dequeue() {
     return top;
 }
 
-// ---- Peek: Lihat pasien berikutnya tanpa mengeluarkan ----
 AntreanNode PriorityQueue::peek() const {
     return heap[0];
 }
 
-// ---- isEmpty ----
 bool PriorityQueue::isEmpty() const {
     return ukuran == 0;
 }
 
-// ---- isFull ----
 bool PriorityQueue::isFull() const {
     return ukuran >= MAX_ANTREAN;
 }
 
-// ---- Get ukuran ----
 int PriorityQueue::getUkuran() const {
     return ukuran;
 }
 
-// ---- Tampilkan semua antrean (sorted by priority) ----
 void PriorityQueue::displayAll() const {
     if (ukuran == 0) {
         cout << "    " << DIM << "(Antrean kosong)" << RESET << endl;
@@ -124,7 +115,7 @@ void PriorityQueue::displayAll() const {
     }
 
     // Buat salinan heap dan extract satu per satu untuk tampilan terurut
-    // (Kita tidak bisa iterasi heap secara terurut tanpa extract)
+    // Kita tidak bisa iterasi heap secara terurut tanpa extract sih bang
     AntreanNode tempHeap[MAX_ANTREAN];
     for (int i = 0; i < ukuran; i++) {
         tempHeap[i] = heap[i];
@@ -147,7 +138,6 @@ void PriorityQueue::displayAll() const {
 
     // Extract satu per satu dari temp heap (simulasi dequeue)
     while (tempUkuran > 0) {
-        // Cari elemen dengan prioritas tertinggi (index 0 di heap)
         AntreanNode current = tempHeap[0];
 
         // Tampilkan

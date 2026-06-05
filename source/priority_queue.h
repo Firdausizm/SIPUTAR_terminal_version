@@ -9,7 +9,7 @@ class PriorityQueue {
 private:
   AntreanNode heap[MAX_ANTREAN];
   int ukuran;
-  int counterUrut; // Auto-increment untuk nomor urut
+  int counterUrut; // buat uto increment nomor urut
 
   // Fungsi heap internal (manual, tanpa library)
   void siftUp(int index);
@@ -22,7 +22,6 @@ private:
 public:
   PriorityQueue();
 
-  // Operasi utama
   void enqueue(const Pasien &pasien, int prioritas, const string &keluhan);
   AntreanNode dequeue();
   AntreanNode peek() const;
