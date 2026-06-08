@@ -12,12 +12,11 @@
 using namespace std;
 namespace fs = std::filesystem;
 
-// Path file CSV
 const string DATA_DIR      = "data";
 const string FILE_PASIEN  = DATA_DIR + "/data_pasien.csv";
 const string FILE_RIWAYAT = DATA_DIR + "/riwayat_penyakit.csv";
 
-// ---- Fungsi: Tambah Pasien ke Antrean ----
+// Tambah Pasien ke Antrean
 void tambahPasienAntrean(PriorityQueue& antrean) {
     clearScreen();
     printHeader();
@@ -136,7 +135,7 @@ void tambahPasienAntrean(PriorityQueue& antrean) {
     pauseScreenNoIgnore();
 }
 
-// ---- Fungsi: Panggil Pasien Berikutnya ----
+// Fungsi buat Panggil Pasien Berikutnya
 void panggilPasienBerikutnya(PriorityQueue& antrean) {
     clearScreen();
     printHeader();
@@ -161,7 +160,7 @@ void panggilPasienBerikutnya(PriorityQueue& antrean) {
     cout << "    " << DIM << "Prioritas" << RESET << " : " << getWarnaPrioritas(node.prioritas) << getLabelPrioritas(node.prioritas) << RESET << endl;
     printInfo("Sisa Antrean", to_string(antrean.getUkuran()) + " pasien");
 
-    // Opsi: Tambah riwayat penyakit setelah diperiksa
+    // Tambah riwayat penyakit setelah diperiksa
     if (!node.pasien.nik.empty()) {
         cout << endl;
         cout << "    " << BOLD_YELLOW << "Apakah ingin menambah riwayat penyakit untuk pasien ini?" << RESET << endl;
@@ -200,7 +199,7 @@ void panggilPasienBerikutnya(PriorityQueue& antrean) {
     pauseScreenNoIgnore();
 }
 
-// ---- Fungsi: Lihat Semua Antrean ----
+// Fungsi buat Lihat Semua Antrean
 void lihatSemuaAntrean(PriorityQueue& antrean) {
     clearScreen();
     printHeader();
@@ -511,9 +510,22 @@ void menuCariRiwayat() {
     pauseScreenNoIgnore();
 }
 
-// ============================================================
-// MAIN
-// ============================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 int main() {
     // Enable ANSI escape codes di Windows
     #ifdef _WIN32
